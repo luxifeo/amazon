@@ -1,21 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var details = require('./details');
 const {OperationHelper} = require('apac');
 
 const opHelper = new OperationHelper({
-  awsId:     details.AccessID,
-  awsSecret: details.Secret,
-  assocId:   details.Tag
+  awsId:     process.env.ACCESSID,
+  awsSecret: process.env.SECRET,
+  assocId:   process.env.TAG
 });
 /* GET home page. */
 router.get('/search/:key', function(req, res, next) {
   opHelper.execute('ItemSearch', {
-    'SearchIndex': 'Books',
+    'SearchIndex': 'All',
     'Keywords': req.params.key,
-    'ResponseGroup': 'ItemAttributes,Offers'
+    'ResponseGroup': 'Images,ItemAttributes,Offers'
   }).then((response) => {
-      res.send(response.result);
+      res.send(response.result.ItemSearchResponse.Items.Item);
   }).catch((err) => {
       console.error("Something went wrong! ", err);
   });
@@ -23,5 +22,19 @@ router.get('/search/:key', function(req, res, next) {
 });
 router.get('/', function(req,res) {
   res.render('index',{title:"Amazon"});
-})
+});
+router.post('/search',function(req,res) {
+  console.log(req.body.key);
+  opHelper.execute('ItemSearch', {
+    'SearchIndex': 'All',
+    'Keywords': req.body.key,
+    //'ItemPage': 2,
+    'ResponseGroup': 'Images,ItemAttributes,Offers'
+  }).then((response) => {
+    res.send(response.result.ItemSearchResponse.Items.Item);
+    console.log("Success");
+  }).catch((err) => {
+  console.error("Oops! ", err);
+  });
+});
 module.exports = router;
