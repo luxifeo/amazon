@@ -12,21 +12,19 @@
     <p><%= title %></p>
     <form name="search" class='search'>
       <input type="text" name="key">
-      <button type="submit">Search</button>
+      <button type="submit">Tìm Kiếm</button>
     </form>
     <span id='login'>
     <% if (user) { %>
-       Hello <%= user %>
+       Xin chào <%= user %>
       <a href='/logout' class='button'>
-        Logout
+        Đăng Xuất
       </a>
     <% }  else { %>
 
-      <form action="/" method="post">
-        <input type="text" name="logemail" placeholder="E-mail" required="">
-        <input type="password" name="logpassword" placeholder="Password" required="">
-        <input type="submit" value="LOGIN NOW">
-      </form>
+        <form method="get" action="/login">
+          <button type="submit">Đăng Nhập/Đăng Kí</button>
+        </form>
     <% } %>
       </span>
     </div>
@@ -34,18 +32,20 @@
     <div class='cart'>
 
     <p>
-      Item in cart: <span id='item'>0</span>
+      Giỏ hàng : <span id='item'>0</span>
     </p>
     <p id="itemlist"></p>
     <p>
-      Current total: $<span id='cost'>0</span>
+      Tổng giá trị: $<span id='cost'>0</span>
     </p>
     </div>
     <% } %>
     <div id="result">  
     </div>
+    <% if (!user) { %> 
     <div id='text'>
-      Hello, Please Login to Add item to cart
+      Xin hãy đăng nhập để có thể đặt hàng
     </div>
+    <% } %>
   </body>
 </html>
