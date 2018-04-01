@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log("Hi");
 
-$('form').submit(function(event) {
+$('.search').submit(function(event) {
   event.preventDefault();
   var key = $('input').val();
   $.post('/search',{key:key},function(result) {

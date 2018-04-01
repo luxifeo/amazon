@@ -193,6 +193,7 @@
 #result {
   max-width: 800px;
   display:block;
+  background-color:blue;
 }
 #itemlist {
   display:block;
@@ -211,16 +212,33 @@
   font-size: 17px;
 }
 .search {
-    float: right;
     padding: 6px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
+    clear:right;
 }
 .cart {
   display:block;
 }
 .topnav {
   overflow:hidden;
+}
+#text {
+  clear:both;
+}
+#login {
+  float:right;
+  padding:6px;
+  margin-top: -34px;
+  margin-right: 16px;
+}
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
 }
