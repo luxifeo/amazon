@@ -12,6 +12,9 @@ const opHelper = new OperationHelper({
 router.get('/', function(req,res) {
   res.render('index',{title:"Amazon",user:''});
 });
+router.get('/login',function(req,res) {
+  res.render('login');
+});
 router.post('/search',function(req,res) {
   console.log(req.body);
   opHelper.execute('ItemSearch', {
@@ -27,7 +30,7 @@ router.post('/search',function(req,res) {
   console.error("Oops! ", err);
   });
 });
-router.post('/', function (req, res, next) {
+router.post('/login', function (req, res, next) {
   // confirm that user typed same password twice
   if (req.body.password !== req.body.passwordConf) {
     var err = new Error('Passwords do not match.');
