@@ -14,8 +14,25 @@
       <input type="text" name="key">
       <button type="submit">Search</button>
     </form>
+    <span id='login'>
+    <% if (user) { %>
+       Hello <%= user %>
+      <a href='/logout' class='button'>
+        Logout
+      </a>
+    <% }  else { %>
+
+      <form action="/" method="post">
+        <input type="text" name="logemail" placeholder="E-mail" required="">
+        <input type="password" name="logpassword" placeholder="Password" required="">
+        <input type="submit" value="LOGIN NOW">
+      </form>
+    <% } %>
+      </span>
     </div>
+    <% if(user) { %>
     <div class='cart'>
+
     <p>
       Item in cart: <span id='item'>0</span>
     </p>
@@ -24,7 +41,11 @@
       Current total: $<span id='cost'>0</span>
     </p>
     </div>
-    <div id="result">     
+    <% } %>
+    <div id="result">  
+    </div>
+    <div id='text'>
+      Hello, Please Login to Add item to cart
     </div>
   </body>
 </html>
