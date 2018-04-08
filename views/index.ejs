@@ -12,7 +12,7 @@
     <p><%= title %></p>
     <form name="search" class='search'>
       <input type="text" name="key">
-      <button type="submit">Tìm Kiếm</button>
+      <button type="submit"><img src='https://cdn.glitch.com/105abdff-5809-4298-b203-62e145394155%2Fsearch.png?1523028276612'></button>
     </form>
     <span id='login'>
     <% if (user) { %>
@@ -27,19 +27,21 @@
         </form>
     <% } %>
       </span>
+      <% if(user) { %> 
+      <div class='cart dropdown'>
+        <button class='dropbtn'><img src='https://cdn.glitch.com/105abdff-5809-4298-b203-62e145394155%2Frsz_cart.png?1522940113892'></button>
+        <div class='dropdown-content'>
+          <p>Giỏ hàng : <span id='item'>0</span></p>
+          <p id="itemlist"></p>
+          <p>Tổng giá trị: $<span id='cost'>0</span></p>
+          <a class='button' id='order'>Thanh toán</a>
+        </div>
+      </div>
+     <% } %>
     </div>
-    <% if(user) { %>
-    <div class='cart'>
-
-    <p>
-      Giỏ hàng : <span id='item'>0</span>
-    </p>
-    <p id="itemlist"></p>
-    <p>
-      Tổng giá trị: $<span id='cost'>0</span>
-    </p>
+    <div id='text'>
+      
     </div>
-    <% } %>
     <div id="result">  
     </div>
     <% if (!user) { %> 

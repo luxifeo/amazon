@@ -15,6 +15,20 @@ router.get('/', function(req,res) {
 router.get('/login',function(req,res) {
   res.render('login');
 });
+router.post('/start',function(req,res){
+  opHelper.execute('ItemSearch',{
+    'SearchIndex': 'All',
+    'Keywords': ' ',
+    'ResponseGroup': 'Images,ItemAttributes,Offers',
+    'Availability': 'Available',
+    'MinPercentageOff': 30,
+  }).then((response) => {
+    res.send(response.result.ItemSearchResponse.Items.Item);
+    console.log("Success");
+    }).catch((err) => {
+    console.error("Oops! ", err);
+  })
+})
 router.post('/search',function(req,res) {
   console.log(req.body);
   opHelper.execute('ItemSearch', {
@@ -30,6 +44,11 @@ router.post('/search',function(req,res) {
   console.error("Oops! ", err);
   });
 });
+////////////////////////////////////////
+router.post('/order',function(req,res) {
+  console.log(req.body);
+  res.render('login');
+})
 router.post('/login', function (req, res, next) {
   // confirm that user typed same password twice
   if (req.body.password !== req.body.passwordConf) {
