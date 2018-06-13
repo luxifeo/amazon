@@ -11,11 +11,56 @@
     <div class='topnav'>
     <p><%= title %></p>
     <form name="search" class='search'>
-      <input type="text" name="key">
+      <select>
+        <option value='All'>Tất cả</option>
+        <option value='Appliances'>Đồ gia dụng</option>
+        <option value='ArtsAndCrafts'>Dụng cu may mặc</option>
+        <option value='Automotive'>Ô tô</option>
+        <option value='Baby'>Trẻ em</option>
+        <option value='Beauty'>Làm đẹp</option>
+        <option value='Blended'></option>
+        <option value='Books'>Sách</option>
+        <option value='Collectibles'>Bộ sưu tập</option>
+        <option value='Electronics'>Điện tử</option>
+        <option value='Fashion'>Thời trang</option>
+        <option value='FashionBaby'>Thời trang trẻ em</option>
+        <option value='FashionBoys'>Thời trang bé nam</option>
+        <option value='FashionGirls'>Thời trang bé nữ</option>
+        <option value='FashionMen'>Thời trang nam</option>
+        <option value='FashionWomen'>Thời trang nữ</option>
+        <option value='GiftCards'>Phiếu tặng quà</option>
+        <option value='Grocery'>Thuốc</option>
+        <option value='HealthPersonalCare'>Sức khỏe</option>
+        <option value='HomeGarden'>Làm vườn</option>
+        <option value='Industrial'>Công nghiệp</option>
+        <option value='KindleStore'>KindleStore</option>
+        <option value='LawnAndGarden'>Làm cỏ</option>
+        <option value='Luggage'>Hành lý</option>
+        <option value='MP3Downloads'>Nhạc MP3</option>
+        <option value='Magazines'>Tạp chí</option>
+        <option value='Merchants'>Thương nhân</option>
+        <option value='MobileApps'>Ứng dụng di động</option>
+        <option value='Movies'>Phim</option>
+        <option value='Music'>Nhạc</option>
+        <option value='MusicalInstruments'>Nhạc cụ</option>
+        <option value='OfficeProducts'>Văn phòng</option>
+        <option value='PCHardware'>Phần cứng PC</option>
+        <option value='PetSupplies'>Thú nuôi</option>
+        <option value='Software'>Phần mềm</option>
+        <option value='SportingGoods'>Thể thao</option>
+        <option value='Tools'>Công cụ</option>
+        <option value='Toys'>Đồng chơi</option>
+        <option value='UnboxVideo'>DVD</option>
+        <option value='VideoGames'>VideoGames</option>
+        <option value='Wine'>Rượu</option>
+        <option value='Wireless'>Thiết bị không dây</option>
+      </select>
+      <input type="text" name="key">      
       <button type="submit"><img src='https://cdn.glitch.com/105abdff-5809-4298-b203-62e145394155%2Fsearch.png?1523028276612'></button>
     </form>
     <span id='login'>
     <% if (user) { %>
+      <a href='/history' class='button'>Lịch sử mua hàng</a>
        Xin chào <%= user %>
       <a href='/logout' class='button'>
         Đăng Xuất
@@ -33,8 +78,12 @@
         <div class='dropdown-content'>
           <p>Giỏ hàng : <span id='item'>0</span></p>
           <p id="itemlist"></p>
-          <p>Tổng giá trị: $<span id='cost'>0</span></p>
-          <a class='button' id='order'>Thanh toán</a>
+          <p>Tổng giá trị: <span id='cost'>0</span>VND</p>
+          <form method='post' action='/order2' id='order'>
+              <button type='submit' formaction='/order'>
+                Thanh toán
+            </button>
+          </form>
         </div>
       </div>
      <% } %>
