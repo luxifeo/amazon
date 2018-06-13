@@ -4,9 +4,27 @@
     <title>Thanh Toán</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="/javascripts/script.js"></script>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="/javascripts/order.js"></script>
+    <link rel="stylesheet" href="/stylesheets/order.css" />
   </head>
   <body>
-    Hóa đơn của <% =user %>
+    <div class='topnav'>
+      Amazon
+    </div>
+    <div>
+      Giỏ hàng của <%=user %>
+    </div>
+    <table>
+      
+    </table>
+    <div class='total'>
+      Tổng giá trị: <span></span>VND
+    </div>
+    <button class='checkout'>
+      Thanh toán
+    </button>
+    <div class='hidden-cart'>
+      <%=cart %>
+    </div>
   </body>
+</html>
